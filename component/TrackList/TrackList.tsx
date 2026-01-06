@@ -61,6 +61,7 @@ const [favorites, setFavorites] = useState<string[]>(() => {
               alt={t.name}
               width={300}
               height={200}
+              unoptimized
             />
           </div>
 
