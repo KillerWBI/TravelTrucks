@@ -37,7 +37,7 @@ interface CampersProps {
 export default async function Campers({ params }: CampersProps) {
   const { id } = await params;
   const response = await getTrackId(id);
-  const data: CamperData = response.data; // Типизируем
+  const data: CamperData = response.data;
   console.log(data)
   return (
     <>

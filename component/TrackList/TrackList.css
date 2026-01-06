@@ -52,12 +52,12 @@
 .desc {
   color: #777;
   margin-bottom: 10px;
-   display: -webkit-box;       /* Используем flexbox-подобный контейнер */
-  -webkit-line-clamp: 1;      /* Ограничиваем одной строкой */
+   display: -webkit-box;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  overflow: hidden;           /* Скрываем лишнее */
-  text-overflow: ellipsis;    /* Показываем "..." */
-  white-space: normal;        /* Позволяем перенос слов внутри линии, но не больше одной линии */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .tags {
@@ -74,8 +74,8 @@
   font-size: 16px;
   font-family: "inter", sans-serif;
   font-weight: 500;
-  display: flex;           /* делаем контейнером */
-  align-items: center;     /* центр по вертикали */
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 

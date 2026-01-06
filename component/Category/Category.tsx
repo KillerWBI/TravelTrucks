@@ -21,7 +21,7 @@ export default function Filters() {
   const [localFilters, setLocalFilters] = useState({
     location: "",
 
-    // equipment
+
     AC: false,
     automatic: false,
     kitchen: false,
@@ -30,7 +30,7 @@ export default function Filters() {
     water: false,
     gas: false,
 
-    // type
+
     form: "" as "" | "panelTruck" | "fullyIntegrated" | "alcove",
   });
 
@@ -51,7 +51,7 @@ export default function Filters() {
     if (typeof value === "boolean" && value === true) filters[key] = true;
   });
 
-  // vehicle type
+
   if (localFilters.form) filters.form = localFilters.form;
 
   setFilters(filters);

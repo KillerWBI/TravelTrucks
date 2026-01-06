@@ -1,7 +1,5 @@
 "use client";
 
-//import Like from "@/public/Like.svg";
-//import StarYell from "@/public/StarYell.svg";
 import AC from "@/public/AC.svg";
 import Bathroom from "@/public/Bathroom.svg";
 import Gas from "@/public/hugeicons_gas-stove.svg";
@@ -66,10 +64,10 @@ const [favorites, setFavorites] = useState<string[]>(() => {
             />
           </div>
 
-          {/* RIGHT PART */}
+
           <div className="content">
 
-            {/* NAME + PRICE */}
+
             <div className="container-price">
             <div className="top">
               <h3>{t.name}</h3>
@@ -86,7 +84,7 @@ const [favorites, setFavorites] = useState<string[]>(() => {
               </div>
             </div>
 
-            {/* RATING + LOCATION */}
+
             <div className="meta">
               <span className="raiting-star">
                 <Image
@@ -101,12 +99,11 @@ const [favorites, setFavorites] = useState<string[]>(() => {
             </div>
             </div>
 
-            {/* DESCRIPTION */}
+
             <p className="desc">
               {t.description}
             </p>
 
-            {/* FEATURES */}
             <div className="tags">
               {t.AC && <span><Image src={AC} className="iconcategory" alt="AC" width={20} height={20} /> AC</span>}
               {t.kitchen && <span><Image src={Kitchen} className="iconcategory" alt="AC" width={20} height={20} />Kitchen</span>}
