@@ -1,5 +1,5 @@
+import toast from "react-hot-toast";
 import { create } from "zustand";
-
 export interface Camper {
   id: string;
   name: string;
@@ -73,6 +73,7 @@ export const useTrucksStore = create<TrucksStore>((set, get) => ({
     const data: CamperBody = await res.json();
     set({ trucks: data, currentPage: 1, loading: false });
   } catch (e: unknown) {
+    toast.error("No results")
     const message = e instanceof Error ? e.message : "Unknown error";
     console.error("Error fetching first page:", message);
     set({ trucks: { total: 0, items: [] }, currentPage: 0, loading: false });

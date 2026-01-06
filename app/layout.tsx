@@ -1,8 +1,8 @@
 import Header from "@/component/Header/Header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
-
 
 
 const geistInter = Inter({
@@ -20,6 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${geistInter.variable} antialiased`}>
+          <Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
           <Header />
           {children}
       </body>
