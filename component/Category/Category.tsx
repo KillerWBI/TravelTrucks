@@ -1,11 +1,15 @@
 "use client";
 
 import AC from "@/public/AC.svg";
+import Alcove from "@/public/Alcove.svg";
+import Automatick from "@/public/Automatic.svg";
 import Bathroom from "@/public/Bathroom.svg";
+import Fully from "@/public/Fully.svg";
 import Gas from "@/public/hugeicons_gas-stove.svg";
 import Water from "@/public/ion_water-outline.svg";
 import Kitchen from "@/public/Kitchen.svg";
 import TV from "@/public/TV.svg";
+import Van from "@/public/Van.svg";
 import { useTrucksStore } from "@/store/campers";
 import Image from "next/image";
 import { useState } from "react";
@@ -27,9 +31,7 @@ export default function Filters() {
     gas: false,
 
     // type
-    van: false,
-    fullyIntegrated: false,
-    alcove: false,
+    form: "" as "" | "panelTruck" | "fullyIntegrated" | "alcove",
   });
 
   const toggle = (key: keyof typeof localFilters) => {
@@ -40,19 +42,20 @@ export default function Filters() {
   };
 
   const apply = () => {
-    const filters: Record<string, string | boolean> = {};
+  const filters: Record<string, string | boolean> = {};
 
-    if (localFilters.location) filters.location = localFilters.location;
+  if (localFilters.location) filters.location = localFilters.location;
 
-    Object.entries(localFilters).forEach(([key, value]) => {
-      if (typeof value === "boolean" && value === true) {
-        filters[key] = true;
-      }
-    });
+  // equipment
+  Object.entries(localFilters).forEach(([key, value]) => {
+    if (typeof value === "boolean" && value === true) filters[key] = true;
+  });
 
-    setFilters(filters);
-  };
+  // vehicle type
+  if (localFilters.form) filters.form = localFilters.form;
 
+  setFilters(filters);
+};
 
 
   return (
@@ -89,7 +92,7 @@ export default function Filters() {
             className={`checkbox ${localFilters.automatic ? "active" : ""}`}
             onClick={() => toggle("automatic")}
           >
-            <Image src={AC} className="iconcategoryPanel" alt="AC" width={20} height={20} />
+            <Image src={Automatick} className="iconcategoryPanel" alt="AC" width={20} height={20} />
             Automatic
           </button>
 
@@ -137,30 +140,34 @@ export default function Filters() {
           <div className="line-category"></div>
         <div className="grid">
           <button
-            disabled
-            className={`checkbox ${localFilters.van ? "active" : ""}`}
-            onClick={() => toggle("van")}
-          >
-            Van
-          </button>
+  className={`checkbox ${localFilters.form === "panelTruck" ? "active" : ""}`}
+  onClick={() => setLocalFilters(prev => ({
+    ...prev,
+    form: prev.form === "panelTruck" ? "" : "panelTruck"
+  }))}>
+  <Image src={Van} className="iconcategoryPanel" alt="panel Truck" width={20} height={20} />
+  panel Truck
+</button>
 
-          <button
-            disabled
-            className={`checkbox ${
-              localFilters.fullyIntegrated ? "active" : ""
-            }`}
-            onClick={() => toggle("fullyIntegrated")}
-          >
-            Fully Integrated
-          </button>
+<button
+  className={`checkbox ${localFilters.form === "fullyIntegrated" ? "active" : ""}`}
+  onClick={() => setLocalFilters(prev => ({
+    ...prev,
+    form: prev.form === "fullyIntegrated" ? "" : "fullyIntegrated"
+  }))}>
+  <Image src={Fully} className="iconcategoryPanel" alt="Fully Integrated" width={20} height={20} />
+  Fully Integrated
+</button>
 
-          <button
-            disabled
-            className={`checkbox ${localFilters.alcove ? "active" : ""}`}
-            onClick={() => toggle("alcove")}
-          >
-            Alcove
-          </button>
+<button
+  className={`checkbox ${localFilters.form === "alcove" ? "active" : ""}`}
+  onClick={() => setLocalFilters(prev => ({
+    ...prev,
+    form: prev.form === "alcove" ? "" : "alcove"
+  }))}>
+  <Image src={Alcove} className="iconcategoryPanel" alt="Alcove" width={20} height={20} />
+  Alcove
+</button>
         </div>
       </div>
 

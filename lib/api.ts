@@ -7,6 +7,6 @@ export const api = axios.create({
 });
 
 
-export function getTrackId (id: string) {
+export async function getTrackId (id: string) {
   return api.get(`/campers/${id}`);
 }

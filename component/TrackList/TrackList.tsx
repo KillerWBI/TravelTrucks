@@ -17,10 +17,9 @@ import { useEffect, useState } from "react";
 import "./TrackList.css";
 
 
-//<Image src={StarYell} className="logo" alt="Logo" width={16} height={16} />
 
 export default function TrucksList() {
-  const { trucks, fetchFirstPage, fetchNextPage, filters, loading } =
+  const { trucks, fetchFirstPage, fetchNextPage, filters, loading, currentPage } =
     useTrucksStore();
 
 const [favorites, setFavorites] = useState<string[]>(() => {
@@ -28,6 +27,8 @@ const [favorites, setFavorites] = useState<string[]>(() => {
     const data = localStorage.getItem("favorites");
     return data ? JSON.parse(data) : [];
   });
+
+  const buttonDissable = trucks.total > currentPage * 4;
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => {
@@ -50,7 +51,7 @@ const [favorites, setFavorites] = useState<string[]>(() => {
 
   return (
     <div className="list">
-      {trucks.map((t) => (
+      {trucks.items.map((t) => (
         <div key={t.id} id={t.id} className="card">
 
           {/* LEFT IMAGE */}
@@ -105,14 +106,14 @@ const [favorites, setFavorites] = useState<string[]>(() => {
               {t.TV && <span><Image src={TV} className="iconcategory" alt="AC" width={20} height={20} />TV</span>}
             </div>
 
-            <Link href={`/camper/${t.id}`}><button className="btn">Show more</button></Link>
+            <Link href={`/campers/${t.id}`}><button className="btn">Show more</button></Link>
           </div>
         </div>
       ))}
 
-      {loading && <p>Loading...</p>}
+      {loading && <span className="loader"></span>}
 
-      <button onClick={fetchNextPage} className="btnmore">Load more</button>
+      {!loading && buttonDissable && <button onClick={fetchNextPage} className="btnmore">Load more</button>}
     </div>
   );
 }
