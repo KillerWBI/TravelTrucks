@@ -43,7 +43,7 @@ export default function TrucksList() {
 
             {/* RATING + LOCATION */}
             <div className="meta">
-              <span>{t.rating}</span>
+              <span>{t.rating}({t.reviews.length} Reviews)</span>
               <span>{t.location}</span>
             </div>
 
