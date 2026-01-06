@@ -55,6 +55,15 @@
   border: 1px solid rgba(0,0,0,0.2);
   background: white;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.iconcategoryPanel {
+  width: 32px;
+  height: 32px;
 }
 .checkbox:hover {
   border-color: rgba(228, 72, 72, 1);
@@ -83,4 +92,17 @@
   border: none;
   background: transparent;
   color: gray;
+}
+.Like {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.Like:hover {
+  transform: scale(1.1);
+}
+.Price-like {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 }

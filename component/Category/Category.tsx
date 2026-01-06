@@ -1,6 +1,13 @@
 "use client";
 
+import AC from "@/public/AC.svg";
+import Bathroom from "@/public/Bathroom.svg";
+import Gas from "@/public/hugeicons_gas-stove.svg";
+import Water from "@/public/ion_water-outline.svg";
+import Kitchen from "@/public/Kitchen.svg";
+import TV from "@/public/TV.svg";
 import { useTrucksStore } from "@/store/campers";
+import Image from "next/image";
 import { useState } from "react";
 import "./Category.css";
 
@@ -16,6 +23,8 @@ export default function Filters() {
     kitchen: false,
     TV: false,
     bathroom: false,
+    water: false,
+    gas: false,
 
     // type
     van: false,
@@ -72,6 +81,7 @@ export default function Filters() {
             className={`checkbox ${localFilters.AC ? "active" : ""}`}
             onClick={() => toggle("AC")}
           >
+            <Image src={AC} className="iconcategoryPanel" alt="AC" width={20} height={20} />
             AC
           </button>
 
@@ -79,6 +89,7 @@ export default function Filters() {
             className={`checkbox ${localFilters.automatic ? "active" : ""}`}
             onClick={() => toggle("automatic")}
           >
+            <Image src={AC} className="iconcategoryPanel" alt="AC" width={20} height={20} />
             Automatic
           </button>
 
@@ -86,6 +97,7 @@ export default function Filters() {
             className={`checkbox ${localFilters.kitchen ? "active" : ""}`}
             onClick={() => toggle("kitchen")}
           >
+            <Image src={Kitchen} className="iconcategoryPanel" alt="Kitchen" width={20} height={20} />
             Kitchen
           </button>
 
@@ -93,6 +105,7 @@ export default function Filters() {
             className={`checkbox ${localFilters.TV ? "active" : ""}`}
             onClick={() => toggle("TV")}
           >
+            <Image src={TV} className="iconcategoryPanel" alt="TV" width={20} height={20} />
             TV
           </button>
 
@@ -100,7 +113,23 @@ export default function Filters() {
             className={`checkbox ${localFilters.bathroom ? "active" : ""}`}
             onClick={() => toggle("bathroom")}
           >
+            <Image src={Bathroom} className="iconcategoryPanel" alt="Bathroom" width={20} height={20} />
             Bathroom
+          </button>
+
+          <button
+            className={`checkbox ${localFilters.water ? "active" : ""}`}
+            onClick={() => toggle("water")}
+          >
+            <Image src={Water} className="iconcategoryPanel" alt="Water" width={20} height={20} />
+            Water
+          </button>
+          <button
+            className={`checkbox ${localFilters.gas ? "active" : ""}`}
+            onClick={() => toggle("gas")}
+          >
+            <Image src={Gas} className="iconcategoryPanel" alt="Gas" width={20} height={20} />
+            Gas
           </button>
         </div>
 
@@ -108,6 +137,7 @@ export default function Filters() {
           <div className="line-category"></div>
         <div className="grid">
           <button
+            disabled
             className={`checkbox ${localFilters.van ? "active" : ""}`}
             onClick={() => toggle("van")}
           >
@@ -115,6 +145,7 @@ export default function Filters() {
           </button>
 
           <button
+            disabled
             className={`checkbox ${
               localFilters.fullyIntegrated ? "active" : ""
             }`}
@@ -124,6 +155,7 @@ export default function Filters() {
           </button>
 
           <button
+            disabled
             className={`checkbox ${localFilters.alcove ? "active" : ""}`}
             onClick={() => toggle("alcove")}
           >
