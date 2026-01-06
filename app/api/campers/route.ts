@@ -2,9 +2,11 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export async function GET(req: Request) {
   try {
-    const url = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
+    const url = `${baseUrl}/campers`;
 
     const params = new URL(req.url).searchParams;
     const page = params.get("page") || "1";
