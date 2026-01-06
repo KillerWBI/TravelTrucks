@@ -4,6 +4,7 @@
 //import StarYell from "@/public/StarYell.svg";
 import { useTrucksStore } from "@/store/campers";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import "./TrackList.css";
 //<Image src={StarYell} className="logo" alt="Logo" width={16} height={16} />
@@ -62,7 +63,7 @@ export default function TrucksList() {
               {t.TV && <span>TV</span>}
             </div>
 
-            <button className="btn">Show more</button>
+            <Link href={`/camper/${t.id}`}><button className="btn">Show more</button></Link>
           </div>
         </div>
       ))}
