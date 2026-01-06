@@ -94,6 +94,7 @@ const firsLetter = (word: string) => {
                   width={292}
                   height={300}
                   className="img-dataile"
+                  unoptimized
                 />
               </div>
             ))}
