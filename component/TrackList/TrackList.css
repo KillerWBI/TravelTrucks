@@ -93,6 +93,7 @@
     border: 1px solid rgba(218, 221, 225, 1);
     border-radius: 200px;
     background-color: white;
+    margin: 0 auto;
 }
 .btnmore:hover {
     border: 1px solid rgba(216, 67, 67, 1);

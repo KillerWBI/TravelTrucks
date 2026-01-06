@@ -19,7 +19,7 @@ export default function TrucksList() {
   return (
     <div className="list">
       {trucks.map((t) => (
-        <div key={t.id} className="card">
+        <div key={t.id} id={t.id} className="card">
 
           {/* LEFT IMAGE */}
           <div className="image">

@@ -65,12 +65,17 @@
 }
 
 .apply {
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 30px;
-  background: #e44848;
+ background: rgba(228, 72, 72, 1);
   color: white;
   border: none;
+  padding: 16px 40px;
+  border-radius: 200px;
+  width: 170px;
+  font-family: 'inter', sans-serif;
+  font-style: medium;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.5%;
 }
 
 .reset {
