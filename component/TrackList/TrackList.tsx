@@ -9,6 +9,7 @@ import Water from "@/public/ion_water-outline.svg";
 import Kitchen from "@/public/Kitchen.svg";
 import Like from "@/public/Like.svg";
 import LikeFaforite from "@/public/LikeActive.svg";
+import Star from "@/public/StarYell.svg";
 import TV from "@/public/TV.svg";
 import { useTrucksStore } from "@/store/campers";
 import Image from "next/image";
@@ -87,7 +88,15 @@ const [favorites, setFavorites] = useState<string[]>(() => {
 
             {/* RATING + LOCATION */}
             <div className="meta">
-              <span>{t.rating}({t.reviews.length} Reviews)</span>
+              <span className="raiting-star">
+                <Image
+                    src={Star}
+                    className="Star"
+                    alt="Star"
+                    width={16}
+                    height={16}
+                  />
+                {t.rating} ({t.reviews.length} Reviews)</span>
               <span>{t.location}</span>
             </div>
             </div>
