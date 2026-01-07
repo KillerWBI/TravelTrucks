@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### 🚐 TravelTrucks — сервіс оренди кемперів
 
-## Getting Started
+## **Загальна інформація**
 
-First, run the development server:
+**TravelTrucks** — це веб-додаток для оренди кемперів.
+Користувач може переглядати каталог транспортних засобів, фільтрувати їх за параметрами, переглядати сторінку окремого кемпера з детальним описом, читати відгуки, додавати в обране та бронювати кемпер через форму.
+
+Проєкт реалізовано на **Next.js + TypeScript** з використанням **App Router**, глобального стану через Zustand, бекенд-фільтрації, пагінації та Live деплою.
+
+---
+
+### 🧰 Стек технологій
+
+## **Основні**
+- Next.js (App Router)
+- React
+- TypeScript
+- Axios
+- CSS Modules / Styled Components
+
+## **Управління станом**
+- Zustand
+- зберігання кемперів
+- фільтри
+- пагінація
+- favorites зі збереженням
+
+## **UX та логіка**
+- кастомна валідація форм
+- toast повідомлення
+- next/image оптимізація
+- loader під час запитів
+- бекенд фільтрація
+- бекенд пагінація
+
+---
+
+### 🗂️ Структура та функціонал проєкту
+
+## **Домашня сторінка /** 
+- Hero блок
+- заклик до дії
+- кнопка View Now → веде в каталог
+
+---
+
+## **Каталог /catalog**
+- список кемперів
+- кнопка Load More
+- бекенд пагінація
+- loader при завантаженні
+
+---
+
+## **Фільтрація**
+- фільтрація виконується на бекенді
+- скидання попередніх результатів перед новими запитами
+- фільтри:
+- локація
+- тип кузова
+- кондиціонер
+- кухня
+- ванна
+- TV
+- інші параметри
+
+---
+
+## **Обране**
+- додавання в favorites
+- збереження після перезавантаження сторінки
+
+---
+
+## **Сторінка кемпера /catalog/:id**
+- галерея фото
+- характеристики
+- деталі
+- вкладки Features / Reviews
+
+## **Характеристики**
+
+## **Деталі**
+- form
+- length
+- width
+- height
+- tank
+- consumption
+
+---
+
+## **Відгуки**
+- рейтинг 1–5
+- текст відгуків
+
+---
+
+## **Форма бронювання**
+
+---
+
+### 🧭 Маршрутизація
+
+- / — домашня сторінка
+- /catalog — каталог
+- /catalog/:id — сторінка кемпера
+
+---
+
+### ⚙️ Backend API
+
+https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
+
+- GET /campers
+- GET /campers/:id
+
+Фільтрація та пагінація на бекенді.
+
+---
+
+### ✅ Реалізовані вимоги
+
+- відповідність макету
+- фільтрація
+- пагінація
+- коректна маршрутизація
+- favorites
+- loader
+- toast
+- валідна верстка
+- чистий код
+- оптимізація картинок
+- деплой
+
+---
+
+### 🚀 Запуск проекту
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
