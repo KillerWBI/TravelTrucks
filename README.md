@@ -146,7 +146,7 @@ npm install
 
 У корені створити:
 
-NEXT_PUBLIC_API_URL=https://66b1f8e71ca8ad33d4f5f63e.mockapi.io
+NEXT_PUBLIC_API_URL
 
 4️⃣ Запустити
 npm run dev
