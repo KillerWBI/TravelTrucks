@@ -1,36 +1,177 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚐 TravelTrucks — сервіс оренди кемперів
 
-## Getting Started
+Фронтенд частина веб-додатку для компанії TravelTrucks, яка надає послуги оренди кемперів.
+Додаток дозволяє переглядати кемпери, фільтрувати їх за параметрами, додавати в обране та переглядати детальну інформацію разом з відгуками і можливістю бронювання.
 
-First, run the development server:
+🔗 API
 
-```bash
+Проєкт працює з готовим бекендом:
+
+Базовий endpoint:
+https://66b1f8e71ca8ad33d4f5f63e.mockapi.io
+
+Документація MockAPI:
+https://github.com/mockapi-io/docs/wiki
+
+Основні endpoints:
+
+GET /campers — отримати список кемперів (з фільтрацією та пагінацією)
+
+GET /campers/:id — отримати деталі кемпера
+
+Фільтрація виконується на бекенді, а не на фронті.
+
+🧰 Технології
+
+Next.js
+
+TypeScript
+
+Zustand — глобальний стан (транспорт, фільтри, обране, пагінація)
+
+Axios — HTTP запити
+
+Next App Router
+
+CSS (custom components + модулі / стилі)
+
+React Hot Toast — нотифікації
+
+Кастомна система валідації форм
+
+🗺️ Маршрутизація
+Route	Опис
+/	Домашня сторінка
+/catalog	Каталог кемперів
+/catalog/:id	Сторінка кемпера
+🎯 Основний функціонал
+✔️ Домашня сторінка
+
+Банер
+
+Кнопка View Now → перенаправляє у каталог
+
+✔️ Каталог
+
+Відображення списку кемперів
+
+Формат ціни: 8000.00
+
+Кнопка Show More — перехід на сторінку деталей
+
+Load More — бекендна пагінація
+
+Обране
+
+додавання / видалення
+
+зберігається після перезавантаження сторінки
+
+✔️ Фільтрація (бекенд!)
+
+локація
+
+тип кузова (один)
+
+обладнання (декілька)
+
+при нових фільтрах:
+
+попередні результати скидаються
+
+завантажуються нові
+
+✔️ Сторінка кемпера
+
+Галерея
+
+Коротка інформація
+
+Tabs
+
+Features (за замовчуванням активний)
+
+Reviews
+
+Характеристики
+
+
+Деталі:
+
+form, length, width, height, tank, consumption
+
+✔️ Відгуки
+
+5-зіркова система рейтингу
+
+коментарі
+
+ім’я користувача
+
+✔️ Форма бронювання
+
+валідація
+
+toast-повідомлення при успіху
+
+UX-friendly
+
+🧠 Стан додатку (Zustand)
+
+Зберігаються:
+
+список кемперів
+
+total + items
+
+фільтри
+
+пагінація
+
+список обраних
+
+loading state
+
+перезапис при новому запиті
+
+🛠️ Встановлення та запуск
+1️⃣ Клонувати репозиторій
+git clone <repo_url>
+cd travel-trucks
+
+2️⃣ Встановити залежності
+npm install
+
+3️⃣ ENV
+
+У корені створити:
+
+NEXT_PUBLIC_API_URL=https://66b1f8e71ca8ad33d4f5f63e.mockapi.io
+
+4️⃣ Запустити
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🚀 Деплой
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Проєкт задеплоєний на:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Frontend: vercel.com / netlify.com
+(Ти вставиш свої посилання)
 
-## Learn More
+✅ Критичні вимоги виконані
 
-To learn more about Next.js, take a look at the following resources:
+✔ відповідність макету
+✔ робота без помилок в консолі
+✔ фільтрація
+✔ маршрутизація
+✔ пагінація
+✔ loader
+✔ оформлений head
+✔ чистий код
+✔ toast + UX
+✔ README
+✔ деплой
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👨‍💻 Автор
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Artem Proskyrovskiy
