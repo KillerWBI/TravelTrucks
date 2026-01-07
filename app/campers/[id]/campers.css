@@ -33,6 +33,7 @@
     font-weight: 600;
     font-family: 'inter', sans-serif;
     font-size: 24px;
+    margin-top: 16px;
 }
 .info-block {
     display: flex;
@@ -107,6 +108,11 @@
   height: 5px;
   background-color: rgba(228, 72, 72, 1);
 }
+.raiting-star {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 
 .tabs-line {
   width: 100%;
@@ -130,6 +136,10 @@ width: 100%;
   font-weight: 500;           /* делаем контейнером */
   align-items: center;     /* центр по вертикали */
   gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .features{
     width: 100%;

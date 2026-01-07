@@ -5,9 +5,12 @@ import Bathroom from "@/public/Bathroom.svg";
 import Gas from "@/public/hugeicons_gas-stove.svg";
 import Water from "@/public/ion_water-outline.svg";
 import Kitchen from "@/public/Kitchen.svg";
+import microwave from "@/public/lucide_microwave.svg";
+import refrigerator from "@/public/solar_fridge-outline.svg";
 import StarUnpositive from "@/public/starWi.svg";
 import StarPositive from "@/public/StarYell.svg";
 import TV from "@/public/TV.svg";
+import radio from "@/public/ui-radios.svg";
 import Image from "next/image";
 import { useState } from "react";
 import "./campers.css";
@@ -77,9 +80,15 @@ const firsLetter = (word: string) => {
           <h2 className="name">{data.name}</h2>
 
           <div className="meta">
-            <span className="raiting-info">
-              {data.rating} ({data.reviews.length} Reviews)
-            </span>
+            <span className="raiting-star">
+                <Image
+                    src={StarPositive}
+                    className="Star"
+                    alt="Star"
+                    width={16}
+                    height={16}
+                  />
+                {data.rating} ({data.reviews.length} Reviews)</span>
             <span className="raiting-info">{data.location}</span>
           </div>
 
@@ -131,6 +140,9 @@ const firsLetter = (word: string) => {
               {data.gas && <span><Image src={Gas} className="iconcategory" alt="AC" width={20} height={20} />Gas</span>}
               {data.water && <span><Image src={Water} className="iconcategory" alt="AC" width={20} height={20} />Water</span>}
               {data.TV && <span><Image src={TV} className="iconcategory" alt="AC" width={20} height={20} />TV</span>}
+              {data.microwave && <span><Image src={microwave} className="iconcategory" alt="microwave" width={20} height={20} />Microwave</span>}
+              {data.refrigerator && <span><Image src={refrigerator} className="iconcategory" alt="refrigerator" width={20} height={20} />Refrigerator</span>}
+              {data.radio && <span><Image src={radio} className="iconcategory" alt="radio" width={20} height={20} />Radio</span>}
             </div>
             <div>
                 <h3 className="titlle">Vehicle details</h3>

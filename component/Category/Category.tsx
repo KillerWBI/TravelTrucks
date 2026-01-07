@@ -8,7 +8,10 @@ import Fully from "@/public/Fully.svg";
 import Gas from "@/public/hugeicons_gas-stove.svg";
 import Water from "@/public/ion_water-outline.svg";
 import Kitchen from "@/public/Kitchen.svg";
+import microwave from "@/public/lucide_microwave.svg";
+import refrigerator from "@/public/solar_fridge-outline.svg";
 import TV from "@/public/TV.svg";
+import radio from "@/public/ui-radios.svg";
 import Van from "@/public/Van.svg";
 import { useTrucksStore } from "@/store/campers";
 import Image from "next/image";
@@ -29,6 +32,9 @@ export default function Filters() {
     bathroom: false,
     water: false,
     gas: false,
+    radio: false,
+    refrigerator: false,
+    microwave: false,
 
 
     form: "" as "" | "panelTruck" | "fullyIntegrated" | "alcove",
@@ -134,6 +140,31 @@ export default function Filters() {
             <Image src={Gas} className="iconcategoryPanel" alt="Gas" width={20} height={20} />
             Gas
           </button>
+
+          <button
+            className={`checkbox ${localFilters.radio ? "active" : ""}`}
+            onClick={() => toggle("radio")}
+          >
+            <Image src={radio} className="iconcategoryPanel" alt="Radio" width={20} height={20} />
+            Radio
+          </button>
+
+          <button
+            className={`checkbox ${localFilters.microwave ? "active" : ""}`}
+            onClick={() => toggle("microwave")}
+          >
+            <Image src={microwave} className="iconcategoryPanel" alt="Radio" width={20} height={20} />
+            Microwave
+          </button>
+
+          <button
+            className={`checkbox ${localFilters.refrigerator ? "active" : ""}`}
+            onClick={() => toggle("refrigerator")}
+          >
+            <Image src={refrigerator} className="iconcategoryPanel" alt="Radio" width={20} height={20} />
+            Refrigerator
+          </button>
+
         </div>
 
         <p className="sub">Vehicle type</p>

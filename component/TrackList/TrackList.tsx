@@ -7,8 +7,11 @@ import Water from "@/public/ion_water-outline.svg";
 import Kitchen from "@/public/Kitchen.svg";
 import Like from "@/public/Like.svg";
 import LikeFaforite from "@/public/LikeActive.svg";
+import microwave from "@/public/lucide_microwave.svg";
+import refrigerator from "@/public/solar_fridge-outline.svg";
 import Star from "@/public/StarYell.svg";
 import TV from "@/public/TV.svg";
+import radio from "@/public/ui-radios.svg";
 import { useTrucksStore } from "@/store/campers";
 import Image from "next/image";
 import Link from "next/link";
@@ -111,6 +114,9 @@ const [favorites, setFavorites] = useState<string[]>(() => {
               {t.gas && <span><Image src={Gas} className="iconcategory" alt="AC" width={20} height={20} />Gas</span>}
               {t.water && <span><Image src={Water} className="iconcategory" alt="AC" width={20} height={20} />Water</span>}
               {t.TV && <span><Image src={TV} className="iconcategory" alt="AC" width={20} height={20} />TV</span>}
+              {t.microwave && <span><Image src={microwave} className="iconcategory" alt="microwave" width={20} height={20} />Microwave</span>}
+              {t.refrigerator && <span><Image src={refrigerator} className="iconcategory" alt="refrigerator" width={20} height={20} />Refrigerator</span>}
+              {t.radio && <span><Image src={radio} className="iconcategory" alt="radio" width={20} height={20} />Radio</span>}
             </div>
 
             <Link href={`/campers/${t.id}`}><button className="btn">Show more</button></Link>
