@@ -11,9 +11,15 @@ import StarUnpositive from "@/public/starWi.svg";
 import StarPositive from "@/public/StarYell.svg";
 import TV from "@/public/TV.svg";
 import radio from "@/public/ui-radios.svg";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import Image from "next/image";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
 import "./campers.css";
+
 
 
 export interface CamperData {
@@ -50,6 +56,19 @@ interface CamperClientProps {
 
 export default function CamperClient({ data }: CamperClientProps) {
   const [activeTab, setActiveTab] = useState<"features" | "reviews">("features");
+
+
+
+const BookingSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email is required"),
+  date: Yup.date().required("Booking date is required"),
+  comment: Yup.string(),
+});
+
+
 
 const renderStars = (rating: number) => {
   const stars = [];
@@ -92,7 +111,7 @@ const firsLetter = (word: string) => {
             <span className="raiting-info">{data.location}</span>
           </div>
 
-          <span className="price">€{data.price}</span>
+          <span className="price">€{data.price}.00</span>
           </div>
           <div className="gallery">
             {data.gallery.map((item, index) => (
@@ -189,19 +208,63 @@ const firsLetter = (word: string) => {
               </div>
             )}
             <div className="contact-us">
-                <div>
-                    <h3 className="TitleUs">Book your campervan now</h3>
-                    <p className="comment">Stay connected! We are always ready to help you.</p>
-                </div>
+  <div>
+    <h3 className="TitleUs">Book your campervan now</h3>
+    <p className="comment">Stay connected! We are always ready to help you.</p>
+  </div>
 
-                <div className="ContainerForm">
-                    <input className="InputInfoC" placeholder="Name*" type="text" />
-                    <input className="InputInfoC" placeholder="Email*" type="text" />
-                    <input className="InputInfoC" placeholder="Booking date*" type="text" />
-                    <textarea placeholder="Comment" className="InputDopInfo"></textarea>
-                </div>
-                <button className="btn-contact">Send</button>
-            </div>
+  <Formik
+    initialValues={{
+      name: "",
+      email: "",
+      date: null,
+      comment: "",
+    }}
+    validationSchema={BookingSchema}
+    onSubmit={(values, { resetForm }) => {
+      toast.success("Booking successful!")
+      resetForm();
+    }}
+  >
+    {({ setFieldValue, values }) => (
+      <Form className="ContainerForm">
+        <Field
+          name="name"
+          placeholder="Name*"
+          className="InputInfoC"
+        />
+        <ErrorMessage name="name" component="div" className="error" />
+
+        <Field
+          name="email"
+          placeholder="Email*"
+          className="InputInfoC"
+        />
+        <ErrorMessage name="email" component="div" className="error" />
+
+        <DatePicker
+          selected={values.date}
+          onChange={(date: Date | null) => setFieldValue("date", date)}
+          placeholderText="Booking date*"
+          className="InputInfoC"
+          dateFormat="dd/MM/yyyy"
+        />
+        <ErrorMessage name="date" component="div" className="error" />
+
+        <Field
+          as="textarea"
+          name="comment"
+          placeholder="Comment"
+          className="InputDopInfo"
+        />
+
+        <button type="submit" className="btn-contact">
+          Send
+        </button>
+      </Form>
+    )}
+  </Formik>
+</div>
           </div>
         </div>
       </div>

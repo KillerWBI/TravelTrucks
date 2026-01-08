@@ -1,7 +1,13 @@
 
+import { Metadata } from "next";
 import Link from "next/link";
 import "./home.css";
 
+
+export const metadata: Metadata = {
+  title: "Camper Catalog | Camper Rental",
+  description: "Browse all campervans available for booking.",
+};
 export default function Home() {
 
 

@@ -1,6 +1,18 @@
 import { getTrackId } from "@/lib/api";
+import { Metadata } from "next";
 import CamperClient from "./camperpage";
 import "./campers.css";
+
+export const metadata = ({ params }: { params: { id: string } }): Metadata => ({
+  title: `Camper Details | Camper #${params.id} | Camper Rental`,
+  description: `View details, features, and reviews of campervan #${params.id}. Book your campervan with ease!`,
+  keywords: ["camper details", "campervan", "booking", "features", "reviews"],
+  openGraph: {
+    title: `Camper Details #${params.id}`,
+    description: `Check features, specifications and reviews of campervan #${params.id}. Book now!`,
+    type: "website",
+  },
+});
 
 export interface CamperData {
   id: string;

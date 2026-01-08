@@ -75,7 +75,7 @@ const [favorites, setFavorites] = useState<string[]>(() => {
             <div className="top">
               <h3>{t.name}</h3>
               <div className="Price-like">
-              <p className="price">€{t.price} </p>
+              <p className="price">€{t.price}.00</p>
               <Image
                     onClick={() => toggleFavorite(t.id)}
                     src={favorites.includes(t.id) ? LikeFaforite : Like}
