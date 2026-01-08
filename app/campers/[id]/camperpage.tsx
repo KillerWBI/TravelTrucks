@@ -21,6 +21,12 @@ import * as Yup from "yup";
 import "./campers.css";
 
 
+interface BookingFormValues {
+  name: string;
+  email: string;
+  date: Date | null;
+  comment: string;
+}
 
 export interface CamperData {
   id: string;
@@ -213,19 +219,19 @@ const firsLetter = (word: string) => {
     <p className="comment">Stay connected! We are always ready to help you.</p>
   </div>
 
-  <Formik
-    initialValues={{
-      name: "",
-      email: "",
-      date: null,
-      comment: "",
-    }}
-    validationSchema={BookingSchema}
-    onSubmit={(values, { resetForm }) => {
-      toast.success("Booking successful!")
-      resetForm();
-    }}
-  >
+  <Formik<BookingFormValues>
+  initialValues={{
+    name: "",
+    email: "",
+    date: null,
+    comment: "",
+  }}
+  validationSchema={BookingSchema}
+  onSubmit={(values, { resetForm }) => {
+    toast.success("Booking successful!");
+    resetForm();
+  }}
+>
     {({ setFieldValue, values }) => (
       <Form className="ContainerForm">
         <Field
@@ -243,12 +249,12 @@ const firsLetter = (word: string) => {
         <ErrorMessage name="email" component="div" className="error" />
 
         <DatePicker
-          selected={values.date}
-          onChange={(date: Date | null) => setFieldValue("date", date)}
-          placeholderText="Booking date*"
-          className="InputInfoC"
-          dateFormat="dd/MM/yyyy"
-        />
+  selected={values.date}
+  onChange={(date: Date | null) => setFieldValue("date", date)}
+  placeholderText="Booking date*"
+  className="InputInfoC"
+  dateFormat="dd/MM/yyyy"
+/>
         <ErrorMessage name="date" component="div" className="error" />
 
         <Field
