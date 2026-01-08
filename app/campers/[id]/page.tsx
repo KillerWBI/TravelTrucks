@@ -1,19 +1,7 @@
 import { getTrackId } from "@/lib/api";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import CamperClient from "./camperpage";
 import "./campers.css";
 
-export const metadata = ({ params }: { params: { id: string } }): Metadata => ({
-  title: `Camper Details | Camper #${params.id} | Camper Rental`,
-  description: `View details, features, and reviews of campervan #${params.id}. Book your campervan with ease!`,
-  keywords: ["camper details", "campervan", "booking", "features", "reviews"],
-  openGraph: {
-    title: `Camper Details #${params.id}`,
-    description: `Check features, specifications and reviews of campervan #${params.id}. Book now!`,
-    type: "website",
-  },
-});
 
 export interface CamperData {
   id: string;
@@ -44,22 +32,20 @@ export interface CamperData {
 }
 
 interface CampersProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
+
+
 export default async function Campers({ params }: CampersProps) {
-  const { id } = params;
+  const { id } = await params;
+  const response = await getTrackId(id);
+  const data: CamperData = response.data;
+  console.log(data)
 
-  let data: CamperData | null = null;
-
-  try {
-    const response = await getTrackId(id);
-    data = response.data;
-    if (!data) notFound(); // если API вернул пусто
-  } catch (err) {
-    console.error(err);
-    notFound(); // fallback на 404, если сервер упал
-  }
-
-  return <CamperClient data={data} />;
+  return (
+    <>
+    <CamperClient data={data}/>
+    </>
+  );
 }
