@@ -1,4 +1,3 @@
-"use client";
 import Category from "@/component/Category/Category";
 import TrackList from "@/component/TrackList/TrackList";
 import { Metadata } from "next";
