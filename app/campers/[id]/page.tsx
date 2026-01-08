@@ -1,5 +1,6 @@
 import { getTrackId } from "@/lib/api";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CamperClient from "./camperpage";
 import "./campers.css";
 
@@ -43,17 +44,22 @@ export interface CamperData {
 }
 
 interface CampersProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 export default async function Campers({ params }: CampersProps) {
-  const { id } = await params;
-  const response = await getTrackId(id);
-  const data: CamperData = response.data;
-  console.log(data)
-  return (
-    <>
-    <CamperClient data={data}/>
-    </>
-  );
+  const { id } = params;
+
+  let data: CamperData | null = null;
+
+  try {
+    const response = await getTrackId(id);
+    data = response.data;
+    if (!data) notFound(); // если API вернул пусто
+  } catch (err) {
+    console.error(err);
+    notFound(); // fallback на 404, если сервер упал
+  }
+
+  return <CamperClient data={data} />;
 }
